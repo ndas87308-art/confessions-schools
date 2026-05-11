@@ -129,6 +129,7 @@ margin-bottom:10px;
 color:white;
 font-size:15px;
 line-height:1.6;
+word-wrap:break-word;
 }
 
 .input-area{
@@ -156,6 +157,7 @@ border-radius:16px;
 background:rgba(255,255,255,0.08);
 padding:15px;
 color:white;
+font-size:15px;
 }
 
 .input-area textarea{
@@ -185,20 +187,12 @@ cursor:pointer;
 
 <div class="topbar">
 <div class="logo">Anonymous</div>
-
-<div class="user">
-Hi,
-<span id="username"></span>
-</div>
+<div class="user">Hi, <span id="username"></span></div>
 </div>
 
 <div class="search-area">
 <div class="search-box">
-<input
-type="text"
-id="searchInput"
-placeholder="Search school names..."
-onkeyup="searchSchool()">
+<input type="text" id="searchInput" placeholder="Search school names..." onkeyup="searchSchool()">
 </div>
 </div>
 
@@ -212,9 +206,7 @@ onkeyup="searchSchool()">
 
 <textarea id="messageInput" placeholder="Write anything anonymously..."></textarea>
 
-<button class="post-btn" onclick="createNote()">
-Post Message
-</button>
+<button class="post-btn" onclick="createNote()">Post Message</button>
 
 </div>
 
@@ -229,27 +221,19 @@ addDoc,
 onSnapshot,
 query,
 orderBy
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-
-apiKey: "AIzaSyDdWhoSLSIQI-Z9GmpAUPBROn0QLSCzZnI",
-
-authDomain: "confession-schhols.firebaseapp.com",
-
-projectId: "confession-schhols",
-
-storageBucket: "confession-schhols.firebasestorage.app",
-
-messagingSenderId: "68471059992",
-
-appId: "1:68471059992:web:88da0a5e1876a4c084756d"
-
+apiKey: "AIzaSyAziRmn4EohJs1H-oi4eLwzcTLn5JJgsZs",
+authDomain: "store-84a98.firebaseapp.com",
+projectId: "store-84a98",
+storageBucket: "store-84a98.firebasestorage.app",
+messagingSenderId: "417370018723",
+appId: "1:417370018723:web:205ce74f0994139133c016",
+measurementId: "G-J2M8GFTBJB"
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
 document.getElementById("username").innerText =
@@ -259,26 +243,20 @@ const board = document.getElementById("board");
 
 async function createNote(){
 
-let school =
-document.getElementById("schoolInput").value.trim();
-
-let name =
-document.getElementById("nameInput").value.trim();
-
-let message =
-document.getElementById("messageInput").value.trim();
+let school = document.getElementById("schoolInput").value.trim();
+let name = document.getElementById("nameInput").value.trim();
+let message = document.getElementById("messageInput").value.trim();
 
 if(school === "" || message === ""){
+alert("Enter school + message");
 return;
 }
 
 await addDoc(collection(db,"notes"),{
-
-school:school,
-name:name,
-message:message,
-time:Date.now()
-
+school,
+name: name || "Anonymous",
+message,
+time: Date.now()
 });
 
 document.getElementById("schoolInput").value="";
@@ -288,42 +266,24 @@ document.getElementById("messageInput").value="";
 
 window.createNote = createNote;
 
-const q = query(
-collection(db,"notes"),
-orderBy("time","desc")
-);
+const q = query(collection(db,"notes"), orderBy("time","desc"));
 
 onSnapshot(q,(snapshot)=>{
 
-board.innerHTML = "";
+board.innerHTML="";
 
 snapshot.forEach((doc)=>{
 
-const note = doc.data();
+const d = doc.data();
 
 const div = document.createElement("div");
-
-div.className = "note";
-
-div.setAttribute(
-"data-school",
-note.school.toLowerCase()
-);
+div.className="note";
+div.setAttribute("data-school", d.school.toLowerCase());
 
 div.innerHTML = `
-
-<div class="school">
-${note.school}
-</div>
-
-<div class="name">
-@${note.name || "Anonymous"}
-</div>
-
-<div class="text">
-${note.message}
-</div>
-
+<div class="school">${d.school}</div>
+<div class="name">@${d.name}</div>
+<div class="text">${d.message}</div>
 `;
 
 board.appendChild(div);
@@ -334,25 +294,12 @@ board.appendChild(div);
 
 window.searchSchool = function(){
 
-let input =
-document.getElementById("searchInput")
-.value.toLowerCase();
+let input = document.getElementById("searchInput").value.toLowerCase();
+let notes = document.querySelectorAll(".note");
 
-let notes =
-document.querySelectorAll(".note");
-
-notes.forEach((note)=>{
-
-let school =
-note.getAttribute("data-school");
-
-if(school.includes(input)){
-note.style.display = "block";
-}
-else{
-note.style.display = "none";
-}
-
+notes.forEach(n=>{
+let school = n.getAttribute("data-school");
+n.style.display = school.includes(input) ? "block" : "none";
 });
 
 };
