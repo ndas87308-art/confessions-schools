@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Anonymous Board</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,166 +10,169 @@
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:#0f0f1a;
-    overflow-x:hidden;
+background:#0f0f1a;
+overflow-x:hidden;
+padding-bottom:250px;
 }
 
 .bg1,.bg2{
-    position:fixed;
-    border-radius:50%;
-    filter:blur(120px);
-    z-index:-1;
+position:fixed;
+border-radius:50%;
+filter:blur(120px);
+z-index:-1;
 }
 
 .bg1{
-    width:350px;
-    height:350px;
-    background:#7c3aed;
-    top:-100px;
-    left:-100px;
+width:350px;
+height:350px;
+background:#7c3aed;
+top:-100px;
+left:-100px;
 }
 
 .bg2{
-    width:350px;
-    height:350px;
-    background:#2563eb;
-    bottom:-120px;
-    right:-100px;
+width:350px;
+height:350px;
+background:#2563eb;
+bottom:-120px;
+right:-100px;
 }
 
 .topbar{
-    width:100%;
-    height:80px;
-    position:fixed;
-    top:0;
-    left:0;
-    backdrop-filter:blur(15px);
-    background:rgba(15,15,26,0.7);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 30px;
-    z-index:1000;
+width:100%;
+height:80px;
+position:fixed;
+top:0;
+left:0;
+backdrop-filter:blur(15px);
+background:rgba(15,15,26,0.7);
+border-bottom:1px solid rgba(255,255,255,0.08);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 30px;
+z-index:1000;
 }
 
 .logo{
-    color:white;
-    font-size:28px;
-    font-weight:700;
+color:white;
+font-size:28px;
+font-weight:700;
 }
 
 .user{
-    color:#cbd5e1;
+color:#cbd5e1;
+font-size:15px;
 }
 
 .search-area{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    margin-top:110px;
-    padding:0 20px;
+width:100%;
+display:flex;
+justify-content:center;
+margin-top:110px;
+padding:0 20px;
 }
 
 .search-box{
-    width:100%;
-    max-width:600px;
+width:100%;
+max-width:600px;
 }
 
 .search-box input{
-    width:100%;
-    height:58px;
-    border:none;
-    outline:none;
-    border-radius:20px;
-    background:rgba(255,255,255,0.08);
-    padding:0 20px;
-    color:white;
-    font-size:16px;
+width:100%;
+height:58px;
+border:none;
+outline:none;
+border-radius:20px;
+background:rgba(255,255,255,0.08);
+padding:0 20px;
+color:white;
+font-size:16px;
 }
 
 .board{
-    width:100%;
-    padding-top:40px;
-    padding-bottom:320px;
+width:100%;
+padding-top:40px;
 }
 
 .note{
-    width:320px;
-    margin:20px auto;
-    padding:18px;
-    border-radius:24px;
-    backdrop-filter:blur(15px);
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.08);
+width:320px;
+margin:20px auto;
+padding:18px;
+border-radius:24px;
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.08);
 }
 
 .school{
-    color:#60a5fa;
-    font-size:16px;
-    font-weight:700;
-    margin-bottom:8px;
+color:#60a5fa;
+font-size:16px;
+font-weight:700;
+margin-bottom:10px;
 }
 
 .name{
-    color:#f9a8d4;
-    font-size:13px;
-    margin-bottom:10px;
+color:#f9a8d4;
+font-size:13px;
+margin-bottom:10px;
 }
 
 .text{
-    color:white;
-    line-height:1.6;
+color:white;
+font-size:15px;
+line-height:1.6;
 }
 
 .input-area{
-    position:fixed;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-    width:92%;
-    max-width:700px;
-    padding:18px;
-    border-radius:30px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    display:flex;
-    flex-direction:column;
-    gap:12px;
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+width:92%;
+max-width:700px;
+padding:18px;
+border-radius:30px;
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.08);
+display:flex;
+flex-direction:column;
+gap:12px;
 }
 
 .input-area input,
 .input-area textarea{
-    width:100%;
-    border:none;
-    outline:none;
-    border-radius:16px;
-    background:rgba(255,255,255,0.08);
-    padding:15px;
-    color:white;
+width:100%;
+border:none;
+outline:none;
+border-radius:16px;
+background:rgba(255,255,255,0.08);
+padding:15px;
+color:white;
 }
 
 .input-area textarea{
-    height:110px;
-    resize:none;
+height:110px;
+resize:none;
 }
 
 .post-btn{
-    width:100%;
-    height:52px;
-    border:none;
-    border-radius:16px;
-    background:linear-gradient(135deg,#7c3aed,#2563eb);
-    color:white;
-    font-size:17px;
-    font-weight:600;
-    cursor:pointer;
+width:100%;
+height:52px;
+border:none;
+border-radius:16px;
+background:linear-gradient(135deg,#7c3aed,#2563eb);
+color:white;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
 }
 
 </style>
@@ -182,156 +184,178 @@ body{
 <div class="bg2"></div>
 
 <div class="topbar">
+<div class="logo">Anonymous</div>
 
-    <div class="logo">
-        Anonymous
-    </div>
-
-    <div class="user">
-        Hi,
-        <span id="username"></span>
-    </div>
-
+<div class="user">
+Hi,
+<span id="username"></span>
+</div>
 </div>
 
 <div class="search-area">
-
-    <div class="search-box">
-
-        <input
-        type="text"
-        id="searchInput"
-        placeholder="Search school names..."
-        onkeyup="searchSchool()">
-
-    </div>
-
+<div class="search-box">
+<input
+type="text"
+id="searchInput"
+placeholder="Search school names..."
+onkeyup="searchSchool()">
+</div>
 </div>
 
 <div class="board" id="board"></div>
 
 <div class="input-area">
 
-    <input type="text"
-    id="schoolInput"
-    placeholder="Enter school name">
+<input type="text" id="schoolInput" placeholder="Enter school name">
 
-    <input type="text"
-    id="nameInput"
-    placeholder="Enter your name (optional)">
+<input type="text" id="nameInput" placeholder="Enter your name (optional)">
 
-    <textarea
-    id="messageInput"
-    placeholder="Write anonymously..."></textarea>
+<textarea id="messageInput" placeholder="Write anything anonymously..."></textarea>
 
-    <button
-    class="post-btn"
-    onclick="createNote()">
-
-        Post Message
-
-    </button>
+<button class="post-btn" onclick="createNote()">
+Post Message
+</button>
 
 </div>
 
-<script>
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+onSnapshot,
+query,
+orderBy
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDdWhoSLSIQI-Z9GmpAUPBROn0QLSCzZnI",
+
+authDomain: "confession-schhols.firebaseapp.com",
+
+projectId: "confession-schhols",
+
+storageBucket: "confession-schhols.firebasestorage.app",
+
+messagingSenderId: "68471059992",
+
+appId: "1:68471059992:web:88da0a5e1876a4c084756d"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
 
 document.getElementById("username").innerText =
 localStorage.getItem("anonymous_name") || "Anonymous";
 
 const board = document.getElementById("board");
 
-let savedNotes =
-JSON.parse(localStorage.getItem("anonymous_notes")) || [];
+async function createNote(){
 
-renderAllNotes();
+let school =
+document.getElementById("schoolInput").value.trim();
 
-function createNote(){
+let name =
+document.getElementById("nameInput").value.trim();
 
-    let school =
-    document.getElementById("schoolInput").value.trim();
+let message =
+document.getElementById("messageInput").value.trim();
 
-    let name =
-    document.getElementById("nameInput").value.trim();
-
-    let message =
-    document.getElementById("messageInput").value.trim();
-
-    if(school === "" || message === ""){
-        return;
-    }
-
-    let noteData = {
-        school:school,
-        name:name,
-        message:message
-    };
-
-    savedNotes.unshift(noteData);
-
-    localStorage.setItem(
-    "anonymous_notes",
-    JSON.stringify(savedNotes)
-    );
-
-    renderAllNotes();
-
-    document.getElementById("schoolInput").value="";
-    document.getElementById("nameInput").value="";
-    document.getElementById("messageInput").value="";
+if(school === "" || message === ""){
+return;
 }
 
-function renderAllNotes(){
+await addDoc(collection(db,"notes"),{
 
-    board.innerHTML = "";
+school:school,
+name:name,
+message:message,
+time:Date.now()
 
-    savedNotes.forEach((note)=>{
+});
 
-        const div =
-        document.createElement("div");
-
-        div.className = "note";
-
-        div.setAttribute(
-        "data-school",
-        note.school.toLowerCase()
-        );
-
-        div.innerHTML = `
-        <div class="school">${note.school}</div>
-        <div class="name">@${note.name || "Anonymous"}</div>
-        <div class="text">${note.message}</div>
-        `;
-
-        board.appendChild(div);
-
-    });
+document.getElementById("schoolInput").value="";
+document.getElementById("nameInput").value="";
+document.getElementById("messageInput").value="";
 }
 
-function searchSchool(){
+window.createNote = createNote;
 
-    let input =
-    document.getElementById("searchInput")
-    .value.toLowerCase();
+const q = query(
+collection(db,"notes"),
+orderBy("time","desc")
+);
 
-    let notes =
-    document.querySelectorAll(".note");
+onSnapshot(q,(snapshot)=>{
 
-    notes.forEach((note)=>{
+board.innerHTML = "";
 
-        let school =
-        note.getAttribute("data-school");
+snapshot.forEach((doc)=>{
 
-        if(school.includes(input)){
-            note.style.display = "block";
-        }
-        else{
-            note.style.display = "none";
-        }
+const note = doc.data();
 
-    });
+const div = document.createElement("div");
 
+div.className = "note";
+
+div.setAttribute(
+"data-school",
+note.school.toLowerCase()
+);
+
+div.innerHTML = `
+
+<div class="school">
+${note.school}
+</div>
+
+<div class="name">
+@${note.name || "Anonymous"}
+</div>
+
+<div class="text">
+${note.message}
+</div>
+
+`;
+
+board.appendChild(div);
+
+});
+
+});
+
+window.searchSchool = function(){
+
+let input =
+document.getElementById("searchInput")
+.value.toLowerCase();
+
+let notes =
+document.querySelectorAll(".note");
+
+notes.forEach((note)=>{
+
+let school =
+note.getAttribute("data-school");
+
+if(school.includes(input)){
+note.style.display = "block";
 }
+else{
+note.style.display = "none";
+}
+
+});
+
+};
 
 </script>
 
